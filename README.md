@@ -1,2 +1,2 @@
 # mcquizer
-Multiple choice quiz setter.
+Multiple choice questions quiz setter.
