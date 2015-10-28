@@ -1,0 +1,36 @@
+{%extends "base.html" %}
+{%block title %}{{ user.username }}{% endblock %}
+{%block head %}Questions for {{ quiz.title }}{% endblock %}
+{%block content %}
+
+{% if questions %}
+<a href="/result/score/{{ quiz.title }}/">score</a> 
+<form action="/score/{{ quiz.title }}/" method="post">
+{% for question in questions %}
+<p><b>{{ question.question_text }}</b></p>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice{{ question.id }}" id="choice{{ forloop.counter }}"  value="{{ forloop.counter }}"/>
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+{% endfor %}
+</br>
+
+<input type="submit" value="submit" />
+</form>
+
+
+</br>
+
+{% if total %}
+<p><b>Your score is {{ score }} / {{ total }}</b></p>
+{% endif %}
+
+{% else %}
+<p>No questions found.</p>
+{% endif %}
+{% endblock %}

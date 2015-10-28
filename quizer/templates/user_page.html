@@ -1,0 +1,16 @@
+{%extends "base.html" %}
+{%block title %}{{ user.username }}{% endblock %}
+{%block head %}Quizzes for {{ user.username }}{% endblock %}
+{%block content %}
+
+{% if quizzes %}
+<ul>
+{% for quiz in quizzes %}
+<li><a href="/quiz/{{ quiz.title }}/">
+{{ quiz.title }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No quiz found.</p>
+{% endif %}
+{% endblock %}
