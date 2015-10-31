@@ -15,10 +15,10 @@ def main_page(request):
 	}
 	return render(request, 'main_page.html', context)
 	
-def get_score(request, quiz_title):
+def get_score(request, quiz_id):
 	try:
 		user = request.user
-		quiz = user.quiz_set.get(title=quiz_title)
+		quiz = user.quiz_set.get(id=quiz_id)
 		scores = quiz.score_set.all()
 				
 	except:
@@ -30,10 +30,10 @@ def get_score(request, quiz_title):
 	}
 	return render(request, 'quiz_scores.html', context)
 	
-def score(request, quiz_title):
+def score(request, quiz_id):
 	try:
 		user = request.user
-		quiz = user.quiz_set.get(title=quiz_title)
+		quiz = Quiz.objects.get(id=quiz_id)
 		questions = quiz.question_set.all()
 		sval = 0
 		found = 0
@@ -67,10 +67,10 @@ def score(request, quiz_title):
 	}
 	return render(request, 'quiz.html', context)
 	
-def quiz(request, quiz_title):
+def quiz(request, quiz_id):
 	try:
 		user = request.user
-		quiz = user.quiz_set.get(title=quiz_title)
+		quiz = Quiz.objects.get(id=quiz_id)
 		questions = quiz.question_set.all()
 	except:
 		raise Http404('Requested user not found.')
@@ -130,7 +130,8 @@ def question_save_page(request):
 			# Create or get quiz.
 			quiz, created = Quiz.objects.get_or_create(
 				user = request.user,
-				title = form.cleaned_data['title']
+				title = form.cleaned_data['title'],
+				time = form.cleaned_data['time']
 			)
 			quiz.save()
 			# Create or get question.

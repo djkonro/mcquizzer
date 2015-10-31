@@ -38,6 +38,12 @@ class QuizSaveForm(forms.Form):
 		label='Title',
 		widget=forms.TextInput(attrs={'size': 60})
 	)
+	
+	time = forms.IntegerField(
+		label='Time in minutes',
+		required=False,
+		widget=forms.TextInput(attrs={'size': 4})
+	)
 	question = forms.CharField(
 		label='Question',
 		required=False,

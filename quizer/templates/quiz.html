@@ -4,8 +4,8 @@
 {%block content %}
 
 {% if questions %}
-<a href="/result/score/{{ quiz.title }}/">score</a> 
-<form action="/score/{{ quiz.title }}/" method="post">
+<a href="/result/score/{{ quiz.id }}/">score</a> 
+<form action="/score/{{ quiz.id }}/" method="post">
 {% for question in questions %}
 <p><b>{{ question.question_text }}</b></p>
 

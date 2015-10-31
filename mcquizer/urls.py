@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^register/$', views.register_page, name='register_page'),
     url(r'^registration/register_success.html', views.register_success_page, name='register_success_page'),
     url(r'^save/$', views.question_save_page, name='question_save_page'),
-    url(r'^quiz/(?P<quiz_title>.+?)/$', views.quiz, name='quiz'),
-    url(r'^result/score/(?P<quiz_title>.+?)/$', views.get_score, name='get_score'),
-    url(r'^score/(?P<quiz_title>.+?)/$', views.score, name='score'),
+    url(r'^quiz/(?P<quiz_id>.+?)/$', views.quiz, name='quiz'),
+    url(r'^result/score/(?P<quiz_id>.+?)/$', views.get_score, name='get_score'),
+    url(r'^score/(?P<quiz_id>.+?)/$', views.score, name='score'),
 ]
