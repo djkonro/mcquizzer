@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^quiz/(?P<quiz_id>.+?)/$', views.quiz, name='quiz'),
     url(r'^result/score/(?P<quiz_id>.+?)/$', views.get_score, name='get_score'),
     url(r'^score/(?P<quiz_id>.+?)/$', views.score, name='score'),
+    url(r'^set_date/(?P<quiz_id>.+?)/$', views.set_date, name='set_date'),
 ]

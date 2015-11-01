@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 from quizer.forms import *
 from quizer.models import *
@@ -29,6 +31,31 @@ def get_score(request, quiz_id):
 		'scores': scores, 
 	}
 	return render(request, 'quiz_scores.html', context)
+
+
+@csrf_exempt
+def set_date(request, quiz_id):
+	try:
+		user = request.user
+		quiz = Quiz.objects.get(id=quiz_id)
+		
+		if request.method == "POST" and request.is_ajax():
+			start = request.POST['start']
+			end = request.POST['end']
+			print(start)
+			print(end)
+	
+		quiz_score, created = Score.objects.get_or_create(
+			user = user,
+			quiz = quiz,
+			score = 0,
+			start_time = start,
+			end_time = end,
+		)
+		quiz_score.save();	
+	except:
+		raise Http404('You did not provide answer for some questions')
+	
 	
 def score(request, quiz_id):
 	try:
@@ -37,23 +64,18 @@ def score(request, quiz_id):
 		questions = quiz.question_set.all()
 		sval = 0
 		found = 0
-		for question in questions:
-			selected_choice = request.POST['choice'+str(question.id)]
-			if int(selected_choice) == int(question.answer) :
-				sval = sval+1
+		
+		if request.method == "POST":
+			for question in questions:
+				selected_choice = request.POST['choice'+str(question.id)]
+				if int(selected_choice) == int(question.answer) :
+					sval = sval+1
+
 		for user_scores in user.score_set.all():	
 			if user_scores.quiz.title == quiz.title:
 				user_scores.score = sval
 				user_scores.save()
 				found = 1
-				
-		if not found :	
-			quiz_score, created = Score.objects.get_or_create(
-				user = user,
-				quiz = quiz,
-				score = sval,
-			)
-			quiz_score.save();
 		
 		
 	except:
@@ -72,12 +94,24 @@ def quiz(request, quiz_id):
 		user = request.user
 		quiz = Quiz.objects.get(id=quiz_id)
 		questions = quiz.question_set.all()
+		start_time = '1'
+		end_time = '1'
+		
+		for user_scores in user.score_set.all():	
+			if user_scores.quiz.title == quiz.title:
+				if user_scores.start_time != '1':
+					start_time = user_scores.start_time;
+					end_time = user_scores.end_time;
+		
 	except:
 		raise Http404('Requested user not found.')
 	context = {
 		'user': request.user,
 		'quiz': quiz,
-		'questions': questions, 
+		'jquiz': json.dumps(quiz.id),
+		'questions': questions,
+		'start_time': json.dumps(start_time),
+		'end_time': json.dumps(end_time), 
 	}
 	return render(request, 'quiz.html', context)
 

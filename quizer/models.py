@@ -26,6 +26,8 @@ class Score(models.Model):
 	score = models.IntegerField(default=0)
 	user = models.ForeignKey(User)
 	quiz = models.ForeignKey(Quiz)
+	start_time = models.CharField(max_length=64)
+	end_time = models.CharField(max_length=64)
 	def __str__(self):
 		return self.quiz.title
 
