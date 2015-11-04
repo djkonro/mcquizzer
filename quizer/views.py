@@ -106,14 +106,18 @@ def quiz(request, quiz_id):
 	except:
 		raise Http404('Requested user not found.')
 	context = {
-		'user': request.user,
+		'user': user,
 		'quiz': quiz,
 		'jquiz': json.dumps(quiz.id),
 		'questions': questions,
 		'start_time': json.dumps(start_time),
 		'end_time': json.dumps(end_time), 
 	}
-	return render(request, 'quiz.html', context)
+	
+	if user == quiz.user :
+		return render(request, 'quiz_edit.html', context)
+	else :
+		return render(request, 'quiz.html', context)
 
 def user_page(request):
 	try:
@@ -193,5 +197,5 @@ def question_save_page(request):
 			)
 	else:
 		form = QuizSaveForm()	
-	return render(request, 'question_save.html', {'form': form})
+	return render(request, 'quiz.html', {'form': form})
 	
