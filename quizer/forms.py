@@ -44,6 +44,8 @@ class QuizSaveForm(forms.Form):
 		required=False,
 		widget=forms.TextInput(attrs={'size': 4})
 	)
+	
+class QuestionSaveForm(forms.Form):
 	question = forms.CharField(
 		label='Question',
 		required=False,
@@ -53,25 +55,25 @@ class QuizSaveForm(forms.Form):
 	choice1 = forms.CharField(
 		label='Choice 1',
 		required=False,
-		widget=forms.TextInput(attrs={'size': 60})
+		widget=forms.TextInput(attrs={'size': 45})
 	)
 	
 	choice2 = forms.CharField(
 		label='Choice 2',
 		required=False,
-		widget=forms.TextInput(attrs={'size': 60})
+		widget=forms.TextInput(attrs={'size': 45})
 	)
 	
 	choice3 = forms.CharField(
 		label='Choice 3',
 		required=False,
-		widget=forms.TextInput(attrs={'size': 60})
+		widget=forms.TextInput(attrs={'size': 45})
 	)
 	
 	choice4 = forms.CharField(
 		label='Choice 4',
 		required=False,
-		widget=forms.TextInput(attrs={'size': 60})
+		widget=forms.TextInput(attrs={'size': 45})
 	)
 	
 	answer = forms.IntegerField(

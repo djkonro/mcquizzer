@@ -115,6 +115,8 @@ def quiz(request, quiz_id):
 	}
 	
 	if user == quiz.user :
+		form = QuestionSaveForm()
+		context["form"] = form;
 		return render(request, 'quiz_edit.html', context)
 	else :
 		return render(request, 'quiz.html', context)
@@ -158,20 +160,14 @@ def register_page(request):
 	
 def register_success_page(request):
 	return render(request, 'registration/register_success.html')
-	
+
 @login_required
-def question_save_page(request):
+def question_save_page(request, quiz_id):
 	if request.method == 'POST':
-		form = QuizSaveForm(request.POST)
+		form = QuestionSaveForm(request.POST)
 		if form.is_valid():
-		
-			# Create or get quiz.
-			quiz, created = Quiz.objects.get_or_create(
-				user = request.user,
-				title = form.cleaned_data['title'],
-				time = form.cleaned_data['time']
-			)
-			quiz.save()
+			quiz = Quiz.objects.get(id=quiz_id)
+			
 			# Create or get question.
 			question, created = Question.objects.get_or_create(
 				quiz = quiz,
@@ -179,7 +175,6 @@ def question_save_page(request):
 				answer = form.cleaned_data['answer'],
 			)
 			question.save()
-			
 			
 			# Create or get quiz.
 			for i in range(1,5):
@@ -189,13 +184,58 @@ def question_save_page(request):
 					choice_text = form.cleaned_data[chstr],
 				)
 				choice.save()
+					
+			return HttpResponseRedirect(
+				'/quiz/'+str(quiz.id)+'/'
+			)
+		else :
+			print("This is not a valid from")
+	else:
+		form = QuizSaveForm()	
+	return render(request, 'quiz_edit.html', {'form': form})
+		
+@login_required
+def quiz_save_page(request):
+	if request.method == 'POST':
+		form1 = QuizSaveForm(request.POST)
+		form2 = QuestionSaveForm(request.POST)
+		
+		if form1.is_valid() and form2.is_valid():
+		
+			# Create or get quiz.
+			quiz, created = Quiz.objects.get_or_create(
+				user = request.user,
+				title = form1.cleaned_data['title'],
+				time = form1.cleaned_data['time']
+			)
+			quiz.save()
+			# Create or get question.
+			question, created = Question.objects.get_or_create(
+				quiz = quiz,
+				question_text = form2.cleaned_data['question'],
+				answer = form2.cleaned_data['answer'],
+			)
+			question.save()
+			
+			
+			# Create or get quiz.
+			for i in range(1,5):
+				chstr = "choice"+str(i)
+				choice, created = Choice.objects.get_or_create(
+					question = question,
+					choice_text = form2.cleaned_data[chstr],
+				)
+				choice.save()
 			
 			
 			
 			return HttpResponseRedirect(
-				'/user/'
+				'/quiz/'+str(quiz.id)+'/'
 			)
+		else :
+			print("This is not a valid from")
 	else:
-		form = QuizSaveForm()	
-	return render(request, 'quiz.html', {'form': form})
+		form1 = QuizSaveForm()
+		form2 = QuestionSaveForm()	
+	return render(request, 'quiz_edit.html', {'form1': form1, 'form2': form2})
 	

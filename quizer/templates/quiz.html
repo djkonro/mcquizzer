@@ -23,8 +23,7 @@
 </script>
 
 {% endif %}
-<div id="quiz_timer">kk</div>
-<a href="/result/score/{{ quiz.id }}/">score</a> 
+<div id="quiz_timer"></div> 
 <form action="/score/{{ quiz.id }}/" method="post">
 {% for question in questions %}
 

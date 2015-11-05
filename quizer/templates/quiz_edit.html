@@ -7,7 +7,7 @@
 {% if questions %}
 <p>Time : {{ quiz.time }} minutes</p>
 <a href="/result/score/{{ quiz.id }}/">score</a> 
-<form action="." method="post">
+<form>
 {% for question in questions %}
 
 <p><b>{{ question.question_text }}</b></p>
@@ -21,14 +21,22 @@
     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}
 {% endfor %}
+</form>
 </br>
 
-<input type="submit" value="Add Quiz" />
+<form method="post" action="/saveq/{{ quiz.id }}/">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Add Question" />
 </form>
-
 </br>
 
 {% else %}
-<p>No questions found.</p>
+<form method="post" action="/saveqz/">
+{% csrf_token %}
+{{ form1.as_p }}
+{{ form2.as_p }}
+<input type="submit" value="Add Question" />
+</form>
 {% endif %}
 {% endblock %}
