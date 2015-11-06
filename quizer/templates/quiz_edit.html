@@ -1,28 +1,44 @@
 {%extends "base.html" %}
 {% load static %}
+{% block external %}
+<script type="text/javascript" src="{% static 'javascript/editfunc.js' %}"></script>
+{% endblock %}
 {%block title %}{{ user.username }}{% endblock %}
 {%block head %}Questions for {{ quiz.title }}{% endblock %}
 {%block content %}
-
+<script>
+	$(document).ready(function () {
+		$(".edit").click(question_edit);
+		$(".delete").click(question_delete);
+	});
+</script>
+{% if quiz.title %}
+<p>Duration : {{ quiz.time }} minutes</p>
 {% if questions %}
-<p>Time : {{ quiz.time }} minutes</p>
+
 <a href="/result/score/{{ quiz.id }}/">score</a> 
 <form>
-{% for question in questions %}
 
-<p><b>{{ question.question_text }}</b></p>
+<ol>
+{% for question in questions %}
+<li id="{{ question.id }}"><b>{{ question.question_text }}</b><br>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
-    <input type="radio" name="choice{{ question.id }}" id="choice{{ forloop.counter }}" class="choice" "  value="{{ forloop.counter }}"/>
+    <input type="radio" name="choice{{ question.id }}" id="choice{{ forloop.counter }}" value="{{ forloop.counter }}"/>
     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+
+{% endfor %}    
+<a href="."class="edit">[edit]</a>
+<a href="/deleteq/{{ question.id }}/{{ quiz.id }}/"class="delete">[delete]</a></li>
 {% endfor %}
-{% endfor %}
+</ol>
 </form>
 </br>
+{% endif %}
 
 <form method="post" action="/saveq/{{ quiz.id }}/">
 {% csrf_token %}
@@ -34,9 +50,8 @@
 {% else %}
 <form method="post" action="/saveqz/">
 {% csrf_token %}
-{{ form1.as_p }}
-{{ form2.as_p }}
-<input type="submit" value="Add Question" />
+{{ form.as_p }}
+<input type="submit" value="Save" />
 </form>
 {% endif %}
 {% endblock %}

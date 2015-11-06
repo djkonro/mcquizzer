@@ -42,9 +42,6 @@ def set_date(request, quiz_id):
 		if request.method == "POST" and request.is_ajax():
 			start = request.POST['start']
 			end = request.POST['end']
-			print(start)
-			print(end)
-	
 		quiz_score, created = Score.objects.get_or_create(
 			user = user,
 			quiz = quiz,
@@ -169,7 +166,7 @@ def question_save_page(request, quiz_id):
 			quiz = Quiz.objects.get(id=quiz_id)
 			
 			# Create or get question.
-			question, created = Question.objects.get_or_create(
+			question = Question.objects.create(
 				quiz = quiz,
 				question_text = form.cleaned_data['question'],
 				answer = form.cleaned_data['answer'],
@@ -179,63 +176,69 @@ def question_save_page(request, quiz_id):
 			# Create or get quiz.
 			for i in range(1,5):
 				chstr = "choice"+str(i)
-				choice, created = Choice.objects.get_or_create(
+				choice = Choice.objects.create(
 					question = question,
 					choice_text = form.cleaned_data[chstr],
 				)
 				choice.save()
-					
 			return HttpResponseRedirect(
 				'/quiz/'+str(quiz.id)+'/'
 			)
-		else :
-			print("This is not a valid from")
-	else:
-		form = QuizSaveForm()	
-	return render(request, 'quiz_edit.html', {'form': form})
+			
+def question_edit(request, qid):
+	if request.method == 'GET' and ('ajax' in list(request.GET.keys())):
+		question = Question.objects.get(id=qid)
+		question.question_text = request.GET['question']
+		question.answer = request.GET['answer']
+		question.save()
+		
+		choices = question.choice_set.all();
+		for i in range(4):
+			chstr = "choice"+str(i+1)
+			c = Choice.objects.get(id=choices[i].id)
+			c.choice_text = request.GET[chstr]
+			c.save()
+		
+	elif request.method == 'GET':
+		question = Question.objects.get(id=qid)
+		choices = question.choice_set.all()
+		form = QuestionSaveForm({
+					'question': question,
+					'choice1': choices[0],
+					'choice2': choices[1],
+					'choice3': choices[2],
+					'choice4': choices[3],
+					'answer':question.answer,
+				})
+		return render(request, 'question_save.html', {'form': form, 'qid':qid})
+		
+
 		
 @login_required
 def quiz_save_page(request):
 	if request.method == 'POST':
-		form1 = QuizSaveForm(request.POST)
-		form2 = QuestionSaveForm(request.POST)
-		
-		if form1.is_valid() and form2.is_valid():
-		
+		form = QuizSaveForm(request.POST)		
+		if form.is_valid():
 			# Create or get quiz.
 			quiz, created = Quiz.objects.get_or_create(
 				user = request.user,
-				title = form1.cleaned_data['title'],
-				time = form1.cleaned_data['time']
+				title = form.cleaned_data['title'],
+				time = form.cleaned_data['time']
 			)
-			quiz.save()
-			# Create or get question.
-			question, created = Question.objects.get_or_create(
-				quiz = quiz,
-				question_text = form2.cleaned_data['question'],
-				answer = form2.cleaned_data['answer'],
-			)
-			question.save()
-			
-			
-			# Create or get quiz.
-			for i in range(1,5):
-				chstr = "choice"+str(i)
-				choice, created = Choice.objects.get_or_create(
-					question = question,
-					choice_text = form2.cleaned_data[chstr],
-				)
-				choice.save()
-			
-			
-			
+			quiz.save()			
 			return HttpResponseRedirect(
 				'/quiz/'+str(quiz.id)+'/'
 			)
 		else :
 			print("This is not a valid from")
 	else:
-		form1 = QuizSaveForm()
-		form2 = QuestionSaveForm()	
-	return render(request, 'quiz_edit.html', {'form1': form1, 'form2': form2})
+		form = QuizSaveForm()
+	return render(request, 'quiz_edit.html', {'form': form})
+	
+def question_delete(request, question_id, quiz_id):
+	question = Question.objects.get(id=question_id)
+	question.delete()
+	return HttpResponseRedirect(
+				'/quiz/'+str(quiz_id)+'/'
+			)
 	
