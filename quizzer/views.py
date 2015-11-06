@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-from quizer.forms import *
-from quizer.models import *
+from quizzer.forms import *
+from quizzer.models import *
 
 def main_page(request):
 	context = {

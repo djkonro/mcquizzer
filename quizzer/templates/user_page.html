@@ -10,13 +10,12 @@
 {{ quiz.title }}</a></li>
 {% endfor %}
 </ul>
-
+{% else %}
+<p>No quiz found.</p>
+{% endif %}
 <form action="/saveqz/">
 {% csrf_token %}
 	<input type="submit" value="Add Quiz" />
 </form>
 
-{% else %}
-<p>No quiz found.</p>
-{% endif %}
 {% endblock %}
