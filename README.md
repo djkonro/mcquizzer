@@ -22,7 +22,7 @@ Start server
 
 Start application
 
-- Open a browser and and input the following url :
+- Open a browser and and input the following url:
    
      http://localhost:8000/login
   
