@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^editq/(?P<qid>.+?)/$', views.question_edit, name='question_edit'),
     url(r'^quiz/(?P<quiz_id>.+?)/$', views.quiz, name='quiz'),
     url(r'^deleteq/(?P<question_id>.+?)/(?P<quiz_id>.+?)/$', views.question_delete, name='question_delete'),
+    url(r'^deleteqz/(?P<quiz_id>.+?)/$', views.quiz_delete, name='quiz_delete'),
     url(r'^result/score/(?P<quiz_id>.+?)/$', views.get_score, name='get_score'),
     url(r'^score/(?P<quiz_id>.+?)/$', views.score, name='score'),
     url(r'^set_date/(?P<quiz_id>.+?)/$', views.set_date, name='set_date'),

@@ -241,4 +241,11 @@ def question_delete(request, question_id, quiz_id):
 	return HttpResponseRedirect(
 				'/quiz/'+str(quiz_id)+'/'
 			)
+			
+def quiz_delete(request, quiz_id):
+	quiz = Quiz.objects.get(id=quiz_id)
+	quiz.delete()
+	return HttpResponseRedirect(
+				'/user/'
+			)
 	
