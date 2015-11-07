@@ -1,27 +1,29 @@
 {%extends "base.html" %}
 {%block title %}{{ user.username }}{% endblock %}
-{%block head %}Score for {{ quiz.title }}{% endblock %}
+{%block head %}Scores for {{ user.username }}{% endblock %}
 {%block content %}
 
 {% if scores %}
-<a href="/quiz/{{ quiz.id }}/">quiz</a> 
-
-<table width="400" cellpadding="10" cellspacing="5" border="2"> 
+<ol>
+{% for score in scores %}
+<li class="quiz">
+{{ score.quiz.title }}
+</li></br>
+<table width="500" cellpadding="5" cellspacing="5" border=".5"> 
 	<tr>
-		<td>User </td>
 		<td>Score</td>
 		<td>Time</td>
 	</tr>
-{% for score in scores %}
 	<tr>
-		<td>{{ score.user }}</td>
 		<td>{{ score.score }}</td>
 		<td>{{ score.start_time }}</td>
 	</tr>
-{% endfor %}
 <table>
 </br>
+{% endfor %}
+</ol>
+
 {% else %}
-<p>No scores found.</p>
+<p>No score found.</p>
 {% endif %}
 {% endblock %}

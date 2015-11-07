@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^deleteqz/(?P<quiz_id>.+?)/$', views.quiz_delete, name='quiz_delete'),
     url(r'^result/score/(?P<quiz_id>.+?)/$', views.get_score, name='get_score'),
     url(r'^score/(?P<quiz_id>.+?)/$', views.score, name='score'),
+    url(r'^score_page/$', views.score_page, name='score_page'),
     url(r'^set_date/(?P<quiz_id>.+?)/$', views.set_date, name='set_date'),
 ]

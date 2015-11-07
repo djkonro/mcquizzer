@@ -248,4 +248,12 @@ def quiz_delete(request, quiz_id):
 	return HttpResponseRedirect(
 				'/user/'
 			)
-	
+			
+def score_page(request) :
+	user = request.user
+	scores = user.score_set.all()
+	context = {
+		'user': user,
+		'scores': scores,	
+	}
+	return render(request, 'score_page.html', context)
