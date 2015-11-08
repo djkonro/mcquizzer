@@ -1,56 +1,59 @@
 <!DOCTYPE html> 
-<!--  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
-    
-   *** this part of the doctype will no longer be necessary with html5 ***
--->
-<html>
+<html lang="en">
     <head>
-        <title>MCQuizer |
+        <title>MCQuizzer |
             {% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="keywords" content="Education, Quiz, Quizzer, Quiz">
+        <meta name="description" content="Set quizzes for your students, employees and numerous others and share">
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}" />
         <script type="text/javascript" src="{% static 'javascript/jquery-1.11.3.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-        {% block external %}{% endblock %}
+
+        {% block external %} {% endblock %}
     </head>
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid col-md-offset-1">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span> 
-                    </button>
-                    <a class="navbar-brand" href="#">MCQuizer</a>
-                </div>
 
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/main_page.html">Home</a></li>
-                        <li><a href="">About</a></li> 
-                        <li><a href="">Contact</a>  </li> 
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if user.is_authenticated %} 
-                        <li class="nav"><a href="/user/" class="glyphicon glyphicon-user">Welcome {{ user.username }}</a></li>
-                        <li class="nav"><a href="/score_page/">Myscores</a></li>
-                        <li class="nav"> <a href="/logout/">logout</a></li>
-                        {% else %}
-                        <li><a href="/register/"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                        <li><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        {% endif %}
-                    </ul>
+    <body style="background-color: rgb(231, 231, 231);">
+        <div id="myinnercontainer" class="container-fluid"> 
+            <nav class="navbar navbar-default" style="background-color: #00ccff; height: 150px;">
+                <div id="myNavbar" style="padding: 40px;" >
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> 
+                        </button>
+                        <a class="navbar-brand" id="Hbrand" href="#"><b>MCQuizzer</b></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="active"><a href="/main_page.html">Home</a></li>
+                            <li><a href="">About</a></li> 
+                            <li><a href="">Contact</a>  </li> 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" id="ulRight">
+                            {% if user.is_authenticated %} 
+                            <li><a href="/user/" class="text-capitalize">Welcome {{ user.username }}</a></li>
+                            <li><a href="/score_page/">My Scores</a></li>
+                            <li> <a href="/logout/">Logout</a></li>
+                            {% else %}
+                            <li><a href="/register/">Register</a></li>
+                            <li><a href="/login/">  Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+            
+            <div id="bodycontent">
+                <div style="margin: 30px;"><h3>{% block head %}{% endblock %}</h3>
+
+                {% block content %}{% endblock %}</div>
             </div>
-        </nav>
-
-        <div class="container-fluid col-md-offset-1">
-            <h1>{% block head %}{% endblock %}</h1>
-
-            {% block content %}{% endblock %}
         </div>
     </body>
 </html>
