@@ -1,14 +1,14 @@
 {%extends "base.html" %}
-{%block title %}{{ user.username }}{% endblock %}
-{%block head %}Quizzes for {{ user.username }}{% endblock %}
+{%block title %}<span class="text-capitalize"><span class="text-capitalize"> {{ user.username }}</span></span>{% endblock %}
+{%block head %}Quizzes for  <span class="text-capitalize"> {{ user.username }}</span>{% endblock %}
 {%block content %}
 
 {% if quizzes %}
 <ul>
-{% for quiz in quizzes %}
-<li class="quiz"><a href="/quiz/{{ quiz.id }}/">
-{{ quiz.title }}</a>
-<a href="/deleteqz/{{ quiz.id }}/"class="delete">[delete]</a></li>
+    {% for quiz in quizzes %}
+    <li class="quiz"><a href="/quiz/{{ quiz.id }}/" class="btn-link ">{{ quiz.title }}</a>
+        &ensp;
+        <a href="/deleteqz/{{ quiz.id }}/" class="delete btn btn-danger">Delete</a></li>
 </li>
 {% endfor %}
 </ul>
@@ -16,8 +16,8 @@
 <p>No quiz found.</p>
 {% endif %}
 <form action="/saveqz/">
-{% csrf_token %}
-	<input type="submit" value="Add Quiz" />
+    {% csrf_token %}
+    <input type="submit" value="Add Quiz" class="btn btn-primary" />
 </form>
-
+<br><br>
 {% endblock %}

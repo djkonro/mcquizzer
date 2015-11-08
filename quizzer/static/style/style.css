@@ -1,13 +1,108 @@
-#nav {
-	float: right;
+// Page level styling
+body{
+    background-color: rgb(231, 231, 231); 
 }
 
-h1 {
-	color: green;
+//Styling for the navbar of the page
+#myNavbar{
+}
+
+#Hbrand{
+    font-family: algerian;
+    //margin-left: -40px;
+    font-size: 35px;
+}
+
+#ulRight{
+    //margin-right: -60px;
+}
+
+// Stying for the content of the page
+#bodycontent{
+    width: inherit; 
+    height: inherit;
+    margin: 20px;
+    margin-top: -20px;
+}
+
+h3 {
+    color: green;
 }
 
 .edit {
-	display: inline;
+    display: inline;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #myinnercontainer{
+        height: inherit;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        background-color: #FFFFFF;
+    }
+
+    #Hbrand{
+        font-family: algerian;
+        //margin-left: -40px;
+        font-size: 15px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    /* For smaller devices: */
+    #myinnercontainer{
+        height: inherit;
+        padding: 0px;
+        margin: 50px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        background-color: #FFFFFF;
+    }
+
+    #Hbrand{
+        font-family: algerian;
+        //margin-left: -40px;
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 990 and max-width: 1200px) {
+    /* For medium devices: */
+
+    #myinnercontainer{
+        height: inherit;
+        padding: 0px;
+        margin: 90px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        background-color: #FFFFFF;
+    }
+
+
+    #Hbrand{
+        font-family: algerian;
+        //margin-left: -40px;
+        font-size: 25px;
+    }
+
+
 }
 
 
+@media only screen and (min-width: 1200px) {
+    /* For larger devices: */
+
+    #myinnercontainer{
+        height: inherit;
+        padding: 0px;
+        margin: 240px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        background-color: #FFFFFF;
+    }
+
+}

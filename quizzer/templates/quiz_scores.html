@@ -1,5 +1,5 @@
 {%extends "base.html" %}
-{%block title %}{{ user.username }}{% endblock %}
+{%block title %}<span class="text-capitalize"><span class="text-capitalize"> {{ user.username }}</span></span>{% endblock %}
 {%block head %}Score for {{ quiz.title }}{% endblock %}
 {%block content %}
 
@@ -7,20 +7,20 @@
 <a href="/quiz/{{ quiz.id }}/">quiz</a> 
 
 <table width="400" cellpadding="10" cellspacing="5" border="2"> 
-	<tr>
-		<td>User </td>
-		<td>Score</td>
-		<td>Time</td>
-	</tr>
-{% for score in scores %}
-	<tr>
-		<td>{{ score.user }}</td>
-		<td>{{ score.score }}</td>
-		<td>{{ score.start_time }}</td>
-	</tr>
-{% endfor %}
-<table>
-</br>
+    <tr>
+        <td>User </td>
+        <td>Score</td>
+        <td>Time</td>
+    </tr>
+    {% for score in scores %}
+    <tr>
+        <td><span class="text-capitalize">{{ score.user }}</span></td>
+        <td>{{ score.score }}</td>
+        <td>{{ score.start_time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
 {% else %}
 <p>No scores found.</p>
 {% endif %}

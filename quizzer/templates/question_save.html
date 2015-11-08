@@ -3,8 +3,8 @@
 <script type="text/javascript" src="{% static 'javascript/editfunc.js' %}"></script>
 
 
-<form id="save-form"method="post" action=".">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="save" />
+<form id="save-form" method="post" class="form-group" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" class="btn btn-primary"/>
 </form>

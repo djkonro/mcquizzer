@@ -1,26 +1,26 @@
 {%extends "base.html" %}
-{%block title %}{{ user.username }}{% endblock %}
-{%block head %}Scores for {{ user.username }}{% endblock %}
+{%block title %} <span class="text-capitalize"> {{ user.username }}</span>{% endblock %}
+{%block head %}Scores for <span class="text-capitalize"> {{ user.username }}</span>{% endblock %}
 {%block content %}
 
 {% if scores %}
 <ol>
-{% for score in scores %}
-<li class="quiz">
-{{ score.quiz.title }}
-</li></br>
-<table width="500" cellpadding="5" cellspacing="5" border=".5"> 
-	<tr>
-		<td>Score</td>
-		<td>Time</td>
-	</tr>
-	<tr>
-		<td>{{ score.score }}</td>
-		<td>{{ score.start_time }}</td>
-	</tr>
-<table>
-</br>
-{% endfor %}
+    {% for score in scores %}
+    <li class="quiz">
+        {{ score.quiz.title }}
+    </li></br>
+    <table width="500" cellpadding="5" cellspacing="5" border=".5"> 
+        <tr>
+            <td>Score</td>
+            <td>Time</td>
+        </tr>
+        <tr>
+            <td>{{ score.score }}</td>
+            <td>{{ score.start_time }}</td>
+        </tr>
+    </table>
+    <br>
+    {% endfor %}
 </ol>
 
 {% else %}

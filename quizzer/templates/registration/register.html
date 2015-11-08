@@ -3,8 +3,8 @@
 {% block head %}User Registration{% endblock %}
 {% block content %}
 <form method="post"  class="form-group pull-left" action=".">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit"  class="btn btn-primary" value="register" />
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit"  class="btn btn-primary" value="register" />
 </form>
 {% endblock %}

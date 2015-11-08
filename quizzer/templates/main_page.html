@@ -4,11 +4,11 @@
 {%block head %}Welcome to MCQuizer{% endblock %}
 {%block content %}
 {% if user.username %}
-<p>Welcome {{ user.username }}!
-Here you can set and share multiple choice questions!</p>
+<p >Welcome <span class="text-capitalize"> {{ user.username }}!</span>
+    Here you can set and share multiple choice questions!</p>
 {% else %}
 <p>Welcome anonymous user!
-You need to <a href="/login/">login</a>
-before you can set and share multiple choice questions!.</p>
+    You need to <a href="/login/">login</a>
+    before you can set and share multiple choice questions!.</p>
 {% endif %}
 {% endblock %}

@@ -7,7 +7,7 @@ class RegistrationForm(forms.Form):
     username = forms.CharField(
                                label='Username', 
                                max_length=30, 
-                               widget=forms.TextInput(attrs={'class':'form-control'})
+                               widget=forms.TextInput(attrs={'class':'form-control', 'autofocus':'autofocus'})
                                )
     email = forms.EmailField(
                              label='Email',
@@ -43,48 +43,48 @@ def clean_username(self):
 class QuizSaveForm(forms.Form):
     title = forms.CharField(
                             label='Title',
-                            widget=forms.TextInput(attrs={'size': 60})
+                            widget=forms.TextInput(attrs={'size': 60, 'class':'form-control', 'autofocus':'autofocus'})
                             )
 	
     time = forms.IntegerField(
                               label='Time in minutes',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 4})
+                              widget=forms.NumberInput(attrs={'size': 4, 'class':'form-control'})
                               )
 	
 class QuestionSaveForm(forms.Form):
     question = forms.CharField(
                                label='Question',
                                required=False,
-                               widget=forms.TextInput(attrs={'size': 60})
+                               widget=forms.TextInput(attrs={'size': 60, 'class':'form-control', 'autofocus':'autofocus'})
                                )
 	
     choice1 = forms.CharField(
                               label='Choice 1',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 45})
+                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control'})
                               )
 	
     choice2 = forms.CharField(
                               label='Choice 2',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 45})
+                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control'})
                               )
 	
     choice3 = forms.CharField(
                               label='Choice 3',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 45})
+                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control'})
                               )
 	
     choice4 = forms.CharField(
                               label='Choice 4',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 45})
+                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control'})
                               )
 	
     answer = forms.IntegerField(
                                 label='Answer',
                                 required=False,
-                                widget=forms.TextInput(attrs={'size': 4})
+                                widget=forms.NumberInput(attrs={'class':'form-control', 'size':4})
                                 )

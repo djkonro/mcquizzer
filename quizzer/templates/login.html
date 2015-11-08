@@ -3,17 +3,20 @@
 {%block head %}User Login{% endblock %}
 {%block content %}
 {% if form.errors %}
-<p>Your username and password didn't match.
-    Please try again.</p>
+<span class="alert-danger">Your username and password didn't match.
+    Please try again.</span><br><br>
 {% endif %}
 
 <form method="post" class="form-group pull-left" action=".">
     {% csrf_token %}
     <p><label for="id_username">Username:</label>
-        <input id="id_username" maxlength="254" name="username" type="text"  class="form-control" /></p>
+        <input id="id_username" maxlength="254" name="username" type="text"  class="form-control" autofocus="autofocus"/>
+    </p>
     <p><label for="id_password">Password:</label>
-        <input id="id_password" name="password" type="password" class="form-control" /></p>
+        <input id="id_password" name="password" type="password" class="form-control" />
+    </p>
     <input type="submit" class="btn btn-primary" value="login" />
     <input type="hidden" name="next" value="/user/" />
 </form>
+<br><br>
 {% endblock %}

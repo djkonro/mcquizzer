@@ -3,46 +3,44 @@
 {% block external %}
 <script type="text/javascript" src="{% static 'javascript/timefunc.js' %}"></script>
 {% endblock %}
-{%block title %}{{ user.username }}{% endblock %}
+{%block title %}<span class="text-capitalize"> {{ user.username }}</span>{% endblock %}
 {%block head %}Questions for {{ quiz.title }}{% endblock %}
 {%block content %}
 
 {% if questions %}
 
 {% if end_time != '"1"' %}
-	<p>you started at {{ start_time }} and you end at {{ end_time }}</p>
+<p>you started at {{ start_time }} and you end at {{ end_time }}</p>
 <script>
-	$(document).ready(function() {
-    	set_timer({{ end_time|safe }}, "quiz_timer") // put your page initialization code here
-	});
-		
-</script>
+        $(document).ready(function() {
+set_timer({{ end_time | safe }}, "quiz_timer") // put your page initialization code here
+        });</script>
 {% else %}
-<script>	
-	$(document).ready(function() {
-	set_timer(set_time({{ jquiz|safe}}, {{ quiz.time|safe}}), "quiz_timer") ;
-	});
+<script>
+            $(document).ready(function() {
+    set_timer(set_time({{ jquiz | safe}}, {{ quiz.time | safe}}), "quiz_timer");
+    });
 </script>
 
 {% endif %}
 <div id="quiz_timer"></div> 
-<form action="/score/{{ quiz.id }}/" method="post">
-{% for question in questions %}
+<form action="/score/{{ quiz.id }}/" method="post" class="form-group pull-left">
+    {% for question in questions %}
 
-<p><b>{{ question.question_text }}</b></p>
+    <p><b>{{ question.question_text }}</b></p>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}<p class="alert-danger"><strong>{{ error_message }}</strong></p>{% endif %}
 
 
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
     <input type="radio" name="choice{{ question.id }}" id="choice{{ forloop.counter }}"  value="{{ forloop.counter }}"/>
     <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-{% endfor %}
-</br>
+    {% endfor %}
+    {% endfor %}
+    <br>
 
-<input type="submit" value="submit" />
+    <input type="submit"  value="submit" class="btn-primary"/>
 </form>
 </br>
 
