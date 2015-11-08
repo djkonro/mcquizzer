@@ -3,7 +3,7 @@
 {% block external %}
 <script type="text/javascript" src="{% static 'javascript/editfunc.js' %}"></script>
 {% endblock %}
-{%block title %}<span class="text-capitalize"> {{ user.username }}</span>{% endblock %}
+{%block title %}{{ user.username }}% endblock %}
 {%block head %}Questions for {{ quiz.title }}{% endblock %}
 <a href="/result/score/{{ quiz.id }}/" class="btn btn-md btn-link">Score</a> 
 {%block content %}

@@ -1,28 +1,26 @@
 // Page level styling
 body{
     background-color: rgb(231, 231, 231); 
-}
+} 
 
+ #myinnercontainer{
+        height: inherit;
+        padding: 0px;
+        overflow-x: no-display;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        box-shadow: 10px 10px 5px grey;
+        background-color: #FFFFFF;
+    }
+    
 //Styling for the navbar of the page
 #myNavbar{
-}
-
-#Hbrand{
-    font-family: algerian;
-    //margin-left: -40px;
-    font-size: 35px;
-}
-
-#ulRight{
-    //margin-right: -60px;
 }
 
 // Stying for the content of the page
 #bodycontent{
     width: inherit; 
     height: inherit;
-    margin: 20px;
-    margin-top: -20px;
 }
 
 h3 {
@@ -33,76 +31,66 @@ h3 {
     display: inline;
 }
 
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    #myinnercontainer{
-        height: inherit;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-        background-color: #FFFFFF;
-    }
-
-    #Hbrand{
-        font-family: algerian;
-        //margin-left: -40px;
-        font-size: 15px;
-    }
-
-}
-
-@media only screen and (max-width: 992px) {
+@media only screen and (min-width: 1200px) {
     /* For smaller devices: */
     #myinnercontainer{
-        height: inherit;
-        padding: 0px;
-        margin: 50px;
+        margin: 180px;
         margin-top: 0px;
         margin-bottom: 0px;
-        background-color: #FFFFFF;
     }
 
     #Hbrand{
         font-family: algerian;
-        //margin-left: -40px;
-        font-size: 20px;
+        font-size: 35px;
     }
 
 }
 
-@media only screen and (min-width: 990 and max-width: 1200px) {
-    /* For medium devices: */
-
-    #myinnercontainer{
-        height: inherit;
-        padding: 0px;
-        margin: 90px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        background-color: #FFFFFF;
-    }
-
-
-    #Hbrand{
-        font-family: algerian;
-        //margin-left: -40px;
-        font-size: 25px;
-    }
-
-
-}
-
-
-@media only screen and (min-width: 1200px) {
+@media only screen and (max-width: 1200px) {
     /* For larger devices: */
 
     #myinnercontainer{
-        height: inherit;
-        padding: 0px;
-        margin: 240px;
+        margin: 50px;
         margin-top: 0px;
         margin-bottom: 0px;
-        background-color: #FFFFFF;
+    }
+
+    
+    #Hbrand{
+        font-family: algerian;
+        font-size: 30px;
+    }
+
+}
+
+
+@media only screen and (max-width: 900px) {
+    /* For medium devices: */
+    #myinnercontainer{
+        margin: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+
+    #Hbrand{
+        font-family: algerian;
+        font-size: 19px;
+    }
+
+
+}
+
+@media only screen and (max-width: 765px) {
+    /* For mobile phones: */
+    #myinnercontainer{
+        margin: 0px;
+        font-size: 13px;
+    }
+
+    #Hbrand{
+        font-family: algerian;
+        font-size: 18px;
     }
 
 }
