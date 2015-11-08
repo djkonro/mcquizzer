@@ -2,9 +2,9 @@
 {% block title %}User Registration{% endblock %}
 {% block head %}User Registration{% endblock %}
 {% block content %}
-<form method="post" action=".">
+<form method="post"  class="form-group pull-left" action=".">
 {% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="register" />
+<input type="submit"  class="btn btn-primary" value="register" />
 </form>
 {% endblock %}

@@ -1,6 +1,10 @@
 # mcquizzer
 Multiple choice quiz setter.
 
+## Note
+
+     Requires Django 1.8
+     
 ## Instruction
 
 Clone application
