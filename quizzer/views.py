@@ -229,8 +229,6 @@ def quiz_save_page(request):
 			return HttpResponseRedirect(
 				'/quiz/'+str(quiz.id)+'/'
 			)
-		else :
-			print("This is not a valid from")
 	else:
 		form = QuizSaveForm()
 	return render(request, 'quiz_edit.html', {'form': form})
