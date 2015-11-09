@@ -7,7 +7,7 @@
     Please try again.</span><br><br>
 {% endif %}
 
-<form method="post" class="form-group pull-left" action=".">
+<form method="post" class="form-group pull-left" action="." style="padding-left: 20px;">
     {% csrf_token %}
     <p><label for="id_username">Username:</label>
         <input id="id_username" maxlength="254" name="username" type="text"  class="form-control" autofocus="autofocus"/>
