@@ -1,10 +1,29 @@
 {% extends "base.html" %}
 {% block title %}User Registration{% endblock %}
-{% block head %}User Registration{% endblock %}
-{% block content %}
-<form method="post"  class="form-group pull-left" action=".">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit"  class="btn btn-primary" value="register" />
-</form>
+
+{%block content %}
+<div  id="myForms" class="row col-sm-6 col-sm-offset-3 form-box">
+    <div class="row col-sm-9 col-xs-offset-2 text">
+        <h3 class="">
+            User Registration
+        </h3>
+        <p>
+            {% if form.errors %}
+            <span class="alert-danger">Your username and password didn't match.Please try again.</span>
+            {% else %}
+            <span> Enter your username and password to login </span>
+            {% endif %}    
+        </p>
+    </div>
+    <div class="form-box form-bottom" style="margin-top: 0px;">
+        <form role="form" method="post" class="form-group login-form" action=".">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <input type="submit" class="form-control btn btn-primary"  value="Register"  />                
+            </div>
+            <input type="hidden" name="next" value="/user/" />
+        </form>
+    </div>
+</div><div class="clearfix"></div><br><br>
 {% endblock %}

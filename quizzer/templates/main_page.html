@@ -7,8 +7,8 @@
 <p >Welcome <span class="text-capitalize"> {{ user.username }}!</span>
     Here you can set and share multiple choice questions!</p>
 {% else %}
-<p>Welcome anonymous user!
-    You need to <a href="/login/">login</a>
-    before you can set and share multiple choice questions!.</p>
+<p>Welcome guest!!!!
+    You need to <a href="/login/" class="btn-link"> Login </a>before you can set and share multiple choice questions
+    or if <a href="/register/" class="btn-link"> Register</a> if new to the platform</p>
 {% endif %}
 {% endblock %}

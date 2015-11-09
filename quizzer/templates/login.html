@@ -1,22 +1,43 @@
-{%extends "base.html" %}
-{%block title %}User Login{% endblock %}
-{%block head %}User Login{% endblock %}
-{%block content %}
-{% if form.errors %}
-<span class="alert-danger">Your username and password didn't match.
-    Please try again.</span><br><br>
-{% endif %}
 
-<form method="post" class="form-group pull-left" action=".">
-    {% csrf_token %}
-    <p><label for="id_username">Username:</label>
-        <input id="id_username" maxlength="254" name="username" type="text"  class="form-control" autofocus="autofocus"/>
-    </p>
-    <p><label for="id_password">Password:</label>
-        <input id="id_password" name="password" type="password" class="form-control" />
-    </p>
-    <input type="submit" class="btn btn-primary" value="login" />
-    <input type="hidden" name="next" value="/user/" />
-</form>
-<br><br>
+{%extends "base.html" %}
+{% load static %}
+{%block title %}User Login{% endblock %}
+{%block head %}
+
+{% endblock %}
+{%block content %}
+<div  id="myForms" class="row col-sm-6 col-sm-offset-3 form-box">
+    <div class="row col-sm-9 col-xs-offset-2 text">
+        <h3 class="">
+            User Login
+        </h3>
+        <p>
+            {% if form.errors %}
+            <span class="alert-danger">Your username and password didn't match.Please try again.</span>
+            {% else %}
+            <span> Enter your username and password to login </span>
+            {% endif %}    
+        </p>
+    </div>
+    <div class="form-box form-bottom" style="margin-top: 0px;">
+        <form role="form" method="post" class="form-group login-form" action="." style="padding-left: 20px;">
+            {% csrf_token %}
+            <div class="form-group">
+                <p><label for="id_username" class="sr-only">Username:</label>
+                    <input id="id_username" maxlength="254" name="username" type="text"  class="form-username form-control" 
+                           placeholder="Username..." autofocus="autofocus"/>
+                </p>
+            </div>
+            <div class="form-group">
+                <p><label for="id_password" class="sr-only">Password:</label>
+                    <input id="id_password" name="password" type="password"  placeholder="Password..." class="form-control form-password" />
+                </p>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="form-control btn btn-primary" value="Sign in" />                
+            </div>
+            <input type="hidden" name="next" value="/user/" />
+        </form>
+    </div>
+</div><div class="clearfix"></div><br><br>
 {% endblock %}
