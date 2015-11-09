@@ -5,10 +5,19 @@
 {%block content %}
 {% if user.username %}
 <p >Welcome <span class="text-capitalize"> {{ user.username }}!</span>
-    Here you can set and share multiple choice questions!</p>
+    Here you can set and share multiple choice questions!
+    <br>
+    {% if user.is_authenticated %} 
+    <br>
+    <a <a href="/user/" class="btn btn-primary" >View All Quizzes</a>    
+    {% endif %}
+</p>
 {% else %}
 <p>Welcome guest!!!!
     You need to <a href="/login/" class="btn-link"> Login </a>before you can set and share multiple choice questions
-    or if <a href="/register/" class="btn-link"> Register</a> if new to the platform</p>
+    or if <a href="/register/" class="btn-link"> Register</a> if new to the platform
+</p>
+    <br>
+
 {% endif %}
 {% endblock %}

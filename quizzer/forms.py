@@ -49,7 +49,7 @@ class QuizSaveForm(forms.Form):
     time = forms.IntegerField(
                               label='Time in minutes',
                               required=False,
-                              widget=forms.NumberInput(attrs={'size': 4, 'class':'form-control'})
+                              widget=forms.NumberInput(attrs={'size': 10, 'class':'form-control'})
                               )
 	
 class QuestionSaveForm(forms.Form):
@@ -86,5 +86,5 @@ class QuestionSaveForm(forms.Form):
     answer = forms.IntegerField(
                                 label='Answer',
                                 required=False,
-                                widget=forms.NumberInput(attrs={'class':'form-control', 'size':4})
+                                widget=forms.NumberInput(attrs={'class':'form-control', 'size':10})
                                 )

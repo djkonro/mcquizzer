@@ -8,7 +8,7 @@
     {% for quiz in quizzes %}
     <li class="quiz"><a href="/quiz/{{ quiz.id }}/" class="btn-link ">{{ quiz.title }}</a>
         &ensp;
-        <a href="/deleteqz/{{ quiz.id }}/" class="delete btn btn-danger">Delete</a></li>
+        <a href="/deleteqz/{{ quiz.id }}/" class="delete btn btn-danger">Delete</a></li><br>
 </li>
 {% endfor %}
 </ul>
