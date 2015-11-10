@@ -33,13 +33,12 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-left">
                             <li class="active"><a href="/main_page.html">Home</a></li>
-                            <li><a href="">About</a></li> 
-                            <li><a href="">Contact</a>  </li> 
+                            <li><a href="/user/" >My Quizzes</a></li>
+                            <li><a href="/score_page/">My Scores</a></li> 
                         </ul>
                         <ul class="nav navbar-nav navbar-right" id="ulRight">
                             {% if user.is_authenticated %} 
-                            <li><a href="/user/" class="text-capitalize">Welcome {{ user.username }}</a></li>
-                            <li><a href="/score_page/">My Scores</a></li>
+                            <li><a href="#" class="text-capitalize">Welcome {{ user.username }}</a></li>
                             <li> <a href="/logout/">Logout</a></li>
                             {% else %}
                             <li><a href="/register/" class="glyphicon glyphicon-user"> Register</a></li>
