@@ -53,6 +53,12 @@ ul{
         margin-bottom: 0px;
     }
 
+    #myForms{
+    margin:200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
     #Hbrand{
         font-family: algerian;
         font-size: 35px;
@@ -69,6 +75,12 @@ ul{
         margin-bottom: 0px;
     }
 
+     #myForms{
+    margin: 190px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
 
     #Hbrand{
         font-family: algerian;
@@ -87,6 +99,11 @@ ul{
         font-size: 13px;
     }
 
+     #myForms{
+    margin: 160px;
+    margin-top: 20px;
+}
+
     #Hbrand{
         font-family: algerian;
         font-size: 19px;
@@ -101,6 +118,12 @@ ul{
         margin: 0px;
         font-size: 13px;
     }
+
+     #myForms{
+    margin: 20px;
+    margin-top: 10px;
+    margin-right: 40px;
+}
 
     #Hbrand{
         font-family: algerian;
@@ -162,10 +185,10 @@ ul{
     border-color: #de995e;
 }
 
-input[type="text"],input[type="number"], 
+input[type="text"],input[type="number"],input[type="email"],  
 input[type="password"], 
 textarea, textarea.form-control {
-    height: 50px;
+    height: 30px;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
@@ -174,7 +197,7 @@ textarea, textarea.form-control {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    line-height: 50px;
+    line-height: 30px;
     color: #888;
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
@@ -188,7 +211,7 @@ textarea.form-control {
     line-height: 30px;
 }
 
-input[type="text"]:focus, input[type="number"],
+input[type="text"]:focus, input[type="number"],input[type="email"], 
 input[type="password"]:focus, 
 textarea:focus, 
 textarea.form-control:focus {
@@ -208,7 +231,7 @@ input[type="number"]:-moz-placeholder, input[type="text"]::-webkit-input-placeho
 textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
 
 button.btn {
-    height: 50px;
+    height: 30px;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;

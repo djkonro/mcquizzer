@@ -20,17 +20,18 @@
         </p>
     </div>
     <div class="form-box form-bottom" style="margin-top: 0px;">
-        <form role="form" method="post" class="form-group login-form" action="." style="padding-left: 20px;">
+        <form role="form" method="post" class="form-group login-form" action="." >
             {% csrf_token %}
             <div class="form-group">
-                <p><label for="id_username" class="sr-only">Username:</label>
-                    <input id="id_username" maxlength="254" name="username" type="text"  class="form-username form-control" 
-                           placeholder="Username..." autofocus="autofocus"/>
+                <p><label for="id_username" class="">Username:</label>
+                    <input id="id_username" maxlength="254" name="username" type="text"  
+                    class="form-username form-control" autofocus="autofocus"/>
                 </p>
             </div>
             <div class="form-group">
-                <p><label for="id_password" class="sr-only">Password:</label>
-                    <input id="id_password" name="password" type="password"  placeholder="Password..." class="form-control form-password" />
+                <p><label for="id_password" class="">Password:</label>
+                    <input id="id_password" name="password" type="password"
+                    class="form-control form-password" />
                 </p>
             </div>
             <div class="form-group">

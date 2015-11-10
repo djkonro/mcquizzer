@@ -2,25 +2,18 @@
 {% block title %}User Registration{% endblock %}
 
 {%block content %}
-<div  id="myForms" class="row col-sm-6 col-sm-offset-3 form-box">
-    <div class="row col-sm-9 col-xs-offset-2 text">
+<div  id="myForms" class="row col-sm-6">
+    <div class="row col-sm-9 col-xs-offset-1 text">
         <h3 class="text-center">
             User Registration
         </h3>
-        <p class="text-left">
-            {% if form.errors %}
-            <span class="alert-danger">Your username and password didn't match.Please try again.</span>
-            {% else %}
-            <span> Enter your username and password to login </span>
-            {% endif %}    
-        </p>
     </div>
-    <div class="form-box form-bottom" style="margin-top: 0px;">
+    <div class="form-box form-bottom" style="margin:0px;">
         <form role="form" method="post" class="form-group login-form" action=".">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-group">
-                <input type="submit" class="form-control btn btn-primary"  value="Register"  />                
+                <input type="submit" class="form-control btn btn-primary" value="Register" />                
             </div>
             <input type="hidden" name="next" value="/user/" />
         </form>
