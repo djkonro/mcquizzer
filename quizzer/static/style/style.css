@@ -256,3 +256,8 @@ input[type="submit"].btn:active, button.btn:active { outline: 0; opacity: 0.6; c
 input[type="submit"].btn:focus, button.btn:focus { outline: 0; opacity: 0.6; background: #de995e; color: #fff; }
 
 input[type="submit"].btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #de995e; color: #fff; }
+
+html, body{
+   height: 100%;
+   min-height: 100%;
+}
