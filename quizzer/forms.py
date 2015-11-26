@@ -74,7 +74,7 @@ class QuestionSaveForm(forms.Form):
     choice3 = forms.CharField(
                               label='Choice 3',
                               required=False,
-                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control', 'required':'required'})
+                              widget=forms.TextInput(attrs={'size': 45, 'class':'form-control', 'required':'required', 'title':'Second choice'})
                               )
 	
     choice4 = forms.CharField(

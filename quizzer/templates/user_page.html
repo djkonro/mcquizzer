@@ -6,8 +6,9 @@
 {% if quizzes %}
 <ul>
     {% for quiz in quizzes %}
-    <li class="quiz"><a href="/quiz/{{ quiz.id }}/" class="btn-link ">{{ quiz.title }}</a>
-        &ensp;
+    <li class="quiz">
+    	<a class="quizname btn-link" href="/quiz/{{ quiz.id }}/" >{{ quiz.title }}</a>
+       <br>
         <a href="/deleteqz/{{ quiz.id }}/" class="delete btn btn-danger">Delete</a></li><br>
 </li>
 {% endfor %}
