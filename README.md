@@ -3,7 +3,7 @@ Multiple choice quiz setter.
 
 ## Note
 
-     Requires Django 1.8
+     Requires at least Django 1.8
      
 ## Instruction
 
